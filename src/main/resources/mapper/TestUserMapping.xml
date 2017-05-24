@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.UserDao">
+
+    <!--根据ID获取用户-->
+    <select id="findUserById" resultMap="UserMap" parameterType="java.lang.Integer">
+       select * from TestUser where id=#{id};
+    </select>
+
+     <!--根据id删除用户-->
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE from TestUser where id=#{id};
+    </delete>
+    <!--数据库表字段映射-->
+    <resultMap id="UserMap" type="com.ssm.model.UserModel">
+        <result property="id" column="ID"/>
+        <result property="name" column="Name"/>
+        <result property="password" column="Password"/>
+    </resultMap>
+</mapper>
